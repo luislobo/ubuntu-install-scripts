@@ -7,11 +7,6 @@ sudo apt-get install -y python-software-properties
 
 ##### REPOSITORIES ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
-# Node.js 0.12
-wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
-sudo sh -c 'echo "deb https://deb.nodesource.com/node_0.12 vivid main" > /etc/apt/sources.list.d/nodesource.list'
-sudo sh -c 'echo "deb-src https://deb.nodesource.com/node_0.12 vivid main" >> /etc/apt/sources.list.d/nodesource.list'
-
 # Git
 sudo add-apt-repository -y ppa:git-core/ppa
 
@@ -25,12 +20,9 @@ sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc
 # Nginx
 sudo add-apt-repository -y ppa:nginx/development
 
-# Sublime Text
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-
-# MongoDB
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+# MongoDB 3.2
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 
 ### SPECIFIC STUFF LUIS USES
 
@@ -39,7 +31,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB31
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
 # Intel graphics card key
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A902DDA375E52366
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A902DDA375E52366
 
 # Various, in specific, truecrypt
 sudo add-apt-repository -y ppa:stefansundin/truecrypt

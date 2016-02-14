@@ -8,6 +8,12 @@ sudo update-java-alternatives -s java-8-oracle
 # Very basic Linux build tools
 sudo apt-get -y install build-essential make
 
+# ZSH, OhMyZSH, its plugins & set as default for current user
+sudo apt-get install -y zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sed -i 's/plugins=(git)/plugins=(git command-not-found common-aliases compleat fabric mercurial npm pip python redis-cli vagrant yii)/g' ~/.zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="amuse"/g' ~/.zshrc
+
 # Basic Common tools
 sudo apt-get install -y mc htop curl ntp ntfs-config
 
@@ -18,15 +24,21 @@ sudo apt-get install -y p7zip-full unrar
 sudo apt-get install -y git git-cola tig
 
 # Mercurial
-# sudo apt-get install -y mercurial
+sudo apt-get install -y mercurial
 
 # Byobu and sets byobu as an available shell
 sudo apt-get install -y byobu
 BYOBU_LOCATION=$(which byobu)
 sudo sh -c "grep -q '$BYOBU_LOCATION' /etc/shells || echo '$BYOBU_LOCATION'>> /etc/shells"
 
-# Node.js and libraries needed for sails
-sudo apt-get install -y nodejs libkrb5-dev
+# nvm, node and modules
+bash -c "wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh"
+nvm install 4.3
+nvm use 4.3
+nvm alias default 4.3
+
+# NPM modules
+sudo npm install -g sails bower grunt-cli pm2 mocha jshint express-generator gulp karma coffee-script dependency-check node-inspector
 
 # Audio and Video avconv & other video tools (replaces ffmpeg)
 sudo apt-get install -y ffmpeg
@@ -60,6 +72,7 @@ sudo tlp start
 sudo apt-get install -y nginx
 
 # MongoDB
+sudo apt-get install -y libkrb5-dev
 sudo apt-get install -y mongodb-org
 
 # Redis
@@ -82,6 +95,13 @@ sudo apt-get install -y fabric
 
 # DKMS - updates things like virtualbox when a new kernel appears
 sudo apt-get install -y dkms
+
+# Linux containers
+sudo apt-get install -y lxc lxctl lxc-templates
+
+# Better Deb installer
+sudo apt-get install -y gdebi
+
 
 ##### GUI PACKAGES ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
 
@@ -183,12 +203,6 @@ sudo apt-get install -y unity-tweak-tool
 # Indicator Multiload
 sudo apt-get install -y indicator-multiload
 
-# Sublime Text
-sudo apt-get install -y sublime-text-installer
-
-# NPM modules
-sudo npm install -g sails bower grunt-cli pm2 mocha jshint
-
 ### LUIS SPECIFIC STUFF
 
 # spotify
@@ -203,16 +217,15 @@ sudo apt-get install -y arandr
 # Hardware info
 sudo apt-get install -y hwinfo
 
-# Linux containers
-sudo apt-get install -y lxc lxctl lxc-templates
+# Install Atom Editor
+wget https://atom.io/download/deb -O atom.deb
+sudo dpkg -i atom.deb
+rm -y atom-deb
 
 # MySQL
 #sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 #sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 #sudo apt-get install -y mysql-server php5-dev php5-cli php5-gd php5-fpm php5-mcrypt php5-json php5-mysql php5-xdebug php5-geoip php5-memcached php5-xmlrpc php5-xsl
-
-# NPM modules
-# NOT USING SINCE I'M ENCRYPTING THE DISK... sudo npm install -g prey
 
 # Openvpn client
 sudo apt-get install -y openvpn network-manager-openvpn
@@ -235,9 +248,6 @@ sudo apt-get install -y samba
 #wget https://download.01.org/gfx/ubuntu/14.04/main/pool/main/i/intel-linux-graphics-installer/intel-linux-graphics-installer_1.0.5-0intel1_amd64.deb
 #sudo dpkg -i intel-linux-graphics-installer_1.0.5-0intel1_amd64.deb
 #rm intel-linux-graphics-installer_1.0.5-0intel1_amd64.deb
-
-# Better Deb installer
-sudo apt-get install -y gdebi
 
 # Pdf MOD
 sudo apt-get install -y pdfmod
@@ -287,12 +297,6 @@ sudo apt-get install -y gimp gimp-plugin-registry
 # Feh
 sudo apt-get install -y feh
 
-# ZSH, OhMyZSH, its plugins & set as default for current user
-sudo apt-get install -y zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-sed -i 's/plugins=(git)/plugins=(git command-not-found common-aliases compleat fabric mercurial npm pip python redis-cli sublime vagrant yii)/g' ~/.zshrc
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="amuse"/g' ~/.zshrc
-
 # Wine
 sudo apt-get install -y wine winetricks
 
@@ -300,7 +304,7 @@ sudo apt-get install -y wine winetricks
 sudo apt-get remove -y fonts-unfonts-core
 
 # install netbeans
-wget http://download.netbeans.org/netbeans/8.1/rc2/bundles/netbeans-8.1rc2-html-linux-x64.sh -O latest-netbeans.sh
+wget http://download.netbeans.org/netbeans/8.1/final/bundles/netbeans-8.1-html-linux-x64.sh -O latest-netbeans.sh
 sudo sh latest-netbeans.sh
 rm -f latest-netbeans.sh
 
