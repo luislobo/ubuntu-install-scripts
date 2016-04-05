@@ -1,3 +1,15 @@
+#!/bin/bash
+
+# root check
+if [[ $EUID -ne 0 ]]; then
+    echo "################################";
+    echo "## YOU ARE NOT RUNNING AS ROOT #";
+    echo "################################";
+    echo "#";
+    echo "# USAGE: sudo $0";
+    exit;
+fi
+
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade

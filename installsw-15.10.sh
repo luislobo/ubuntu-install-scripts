@@ -1,3 +1,10 @@
+#!/bin/bash
+
+if [[ $EUID -eq 0 ]]; then
+  echo "You must NOT run this script as ROOT" 2>&1
+  exit 1
+fi
+
 ##### INSTALL CLI PACKAGES ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
 # Java
