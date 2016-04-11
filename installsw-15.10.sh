@@ -65,9 +65,8 @@ aptGetInstall build-essential make
 
 # ZSH, OhMyZSH, its plugins & set as default for current user
 aptGetInstall zsh
-sh -c "$(curl -fsSL $oh_my_zsh_url)"
-sed -i 's/plugins=(git)/plugins=(aws bower command-not-found composer common-aliases compleat debian dircycle dirhistory dirpersist docker gitfast git-extras fabric last-working-dir mercurial node npm pip python red
-is-cli screen sublime sudo systemd vagrant web-search yii yii2 wd)/g' ~/.zshrc
+sh -c "$(wget $oh_my_zsh_url -O -)"
+sed -i 's/plugins=(git)/plugins=(aws bower command-not-found composer common-aliases compleat debian dircycle dirhistory dirpersist docker gitfast git-extras fabric last-working-dir mercurial node npm pip python redis-cli screen sublime sudo systemd vagrant web-search yii yii2 wd)/g' ~/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="amuse"/g' ~/.zshrc
 
 # Basic Common tools
@@ -103,7 +102,7 @@ npm install npm@latest -g
 npm --version
 
 # NPM modules
-npm install -g sails bower grunt-cli pm2 mocha jshint express-generator gulp karma coffee-script dependency-check node-inspector npm-check-updates
+npm install -g sails bower grunt-cli pm2 mocha jshint express-generator gulp karma coffee-script dependency-check node-inspector npm-check-updates bower-check-updates
 
 # Audio and Video avconv & other video tools (replaces ffmpeg)
 aptGetInstall ffmpeg
