@@ -93,4 +93,5 @@ addRepository ppa:libreoffice/ppa
 addRepository ppa:ubuntu-wine/ppa
 
 ##### UPDATE REPOSITORIES ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
-apt-get update
+apt-get -y update
+apt-get -y autoremove
