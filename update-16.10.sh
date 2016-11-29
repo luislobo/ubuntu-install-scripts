@@ -24,7 +24,7 @@ trap control_c SIGINT
 export DEBIAN_FRONTEND=noninteractive
 
 function aptGetInstall {
-  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" "$@"
+  apt install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" "$@"
 }
 
 function addRepository {
@@ -33,9 +33,9 @@ function addRepository {
 
 ##### UPDATE ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
 
-apt-get update
-apt-get upgrade
-apt-get dist-upgrade
+apt update
+apt upgrade
+apt dist-upgrade
 
 # python-software-properties installs add-apt-repository
 aptGetInstall python-software-properties
@@ -51,7 +51,7 @@ addRepository ppa:webupd8team/java
 # Chrome
 if [ ! -f /etc/apt/sources.list.d/google-chrome.list ]; then
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-  sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+  sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 fi
 
 # Nginx
@@ -60,8 +60,9 @@ addRepository ppa:nginx/development
 # MongoDB 3.2
 if [ ! -f /etc/apt/sources.list.d/mongodb-org-3.2.list ]; then
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-  echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.2 main" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+  echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 fi
+
 ### SPECIFIC STUFF LUIS USES
 
 # spotify
@@ -70,9 +71,9 @@ if [ ! -f /etc/apt/sources.list.d/spotify.list ]; then
   echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
 fi
 
-# Maria DB
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu wily main'
+## Maria DB
+#apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+#add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu wily main'
 
 # Intel graphics card key
 # apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A902DDA375E52366
@@ -92,6 +93,10 @@ addRepository ppa:libreoffice/ppa
 # Wine
 addRepository ppa:ubuntu-wine/ppa
 
+# Simple screen recorder
+
+addRepository ppa:maarten-baert/simplescreenrecorder
+
 ##### UPDATE REPOSITORIES ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
-apt-get -y update
-apt-get -y autoremove
+apt -y update
+apt -y autoremove
