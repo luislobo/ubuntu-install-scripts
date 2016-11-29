@@ -81,17 +81,11 @@ fi
 # Various, in specific, truecrypt
 addRepository ppa:stefansundin/truecrypt
 
-# Clementine
-addRepository ppa:me-davidsansome/clementine-dev
-
 # Equalizer
 addRepository ppa:nilarimogard/webupd8
 
 # Libre Office
 addRepository ppa:libreoffice/ppa
-
-# Wine
-addRepository ppa:ubuntu-wine/ppa
 
 # Simple screen recorder
 
