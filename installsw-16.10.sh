@@ -230,9 +230,6 @@ aptGetInstall skype
 # Truecrypt
 aptGetInstall truecrypt
 
-# Record my desktop
-aptGetInstall gtk-recordmydesktop
-
 # Clementine
 aptGetInstall clementine
 
@@ -246,7 +243,7 @@ aptGetInstall gimp gimp-plugin-registry
 aptGetInstall feh
 
 # Wine
-aptGetInstall wine winetricks
+aptGetInstall wine-development winetricks
 
 # Simple Screen Recorder
 aptGetInstall simplescreenrecorder-lib:i386 simplescreenrecorder
