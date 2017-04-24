@@ -48,7 +48,7 @@ aptGetInstall build-essential make
 
 # ZSH, OhMyZSH, its plugins & set as default for current user
 aptGetInstall zsh
-sh -c "$(wget $oh_my_zsh_url -O -)"
+sh -c "$(wget $oh_my_zsh_url -O -)" -s --batch
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="amuse"/g' ~/.zshrc
 
 # Basic Common tools
