@@ -54,29 +54,7 @@ if [ ! -f /etc/apt/sources.list.d/google-chrome.list ]; then
   sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 fi
 
-# Nginx
-addRepository ppa:nginx/development
-
-# MongoDB 3.2
-if [ ! -f /etc/apt/sources.list.d/mongodb-org-3.2.list ]; then
-  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-  echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
-fi
-
 ### SPECIFIC STUFF LUIS USES
-
-# spotify
-if [ ! -f /etc/apt/sources.list.d/spotify.list ]; then
-  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-  echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
-fi
-
-## Maria DB
-#apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-#add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu wily main'
-
-# Intel graphics card key
-# apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A902DDA375E52366
 
 # Various, in specific, truecrypt
 addRepository ppa:stefansundin/truecrypt
@@ -88,7 +66,6 @@ addRepository ppa:nilarimogard/webupd8
 addRepository ppa:libreoffice/ppa
 
 # Simple screen recorder
-
 addRepository ppa:maarten-baert/simplescreenrecorder
 
 ##### UPDATE REPOSITORIES ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
