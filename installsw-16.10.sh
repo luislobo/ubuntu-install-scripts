@@ -48,7 +48,7 @@ aptGetInstall build-essential make
 
 # ZSH, OhMyZSH, its plugins & set as default for current user
 aptGetInstall zsh
-sh -c "$(wget $oh_my_zsh_url -O -)"
+sh -c "$(wget $oh_my_zsh_url -O -)" -s --batch
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="amuse"/g' ~/.zshrc
 
 # Basic Common tools
@@ -82,7 +82,7 @@ npm install npm@latest -g
 npm --version
 
 # NPM modules
-npm install -g sails bower grunt-cli pm2 mocha jshint eslint gulp karma coffee-script dependency-check node-inspector npm-check-updates bower-check-updates
+npm install -g sails bower grunt-cli pm2 mocha jshint eslint gulp karma coffee-script dependency-check node-inspector npm-check-updates bower-check-updates yarn
 
 # ffmpeg
 aptGetInstall ffmpeg
@@ -112,30 +112,11 @@ aptGetInstall preload
 aptGetInstall tlp tlp-rdw
 sudo tlp start
 
-# Nginx
-aptGetInstall nginx
-
-# MongoDB
-aptGetInstall libkrb5-dev
-aptGetInstall mongodb-org
-
-# Redis
-aptGetInstall redis-server
-
-# SQLite
-aptGetInstall sqlite
-
-# Memcached
-aptGetInstall memcached
-
 # Encrypt FS utils
 aptGetInstall ecryptfs-utils
 
 # Gnome Partition Editor
 aptGetInstall gparted
-
-# Fabric tool
-aptGetInstall fabric
 
 # DKMS - updates things like virtualbox when a new kernel appears
 aptGetInstall dkms
@@ -169,11 +150,6 @@ aptGetInstall unity-tweak-tool
 # Indicator Multiload
 aptGetInstall indicator-multiload
 
-### LUIS SPECIFIC STUFF
-
-# spotify
-aptGetInstall spotify-client
-
 # zsync
 aptGetInstall zsync
 
@@ -182,9 +158,6 @@ aptGetInstall arandr
 
 # Hardware info
 aptGetInstall hwinfo
-
-# Install Atom Editor
-installFromUrl https://atom.io/download/deb
 
 # Openvpn client
 aptGetInstall openvpn network-manager-openvpn
@@ -223,10 +196,6 @@ aptGetInstall compizconfig-settings-manager
 # Advanced volume control
 aptGetInstall pavucontrol
 
-# skype
-# First, libraries so that skype looks correctly on Ubuntu 64
-aptGetInstall skype
-
 # Truecrypt
 aptGetInstall truecrypt
 
@@ -243,7 +212,7 @@ aptGetInstall gimp gimp-plugin-registry
 aptGetInstall feh
 
 # Wine
-aptGetInstall wine-development winetricks
+aptGetInstall wine winetricks
 
 # Simple Screen Recorder
 aptGetInstall simplescreenrecorder-lib:i386 simplescreenrecorder
